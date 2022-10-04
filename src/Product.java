@@ -1,2 +1,6 @@
-package PACKAGE_NAME;public class Product {
+public class Product
+{
+    private String name;
+    private double unitPrice;
+
 }
