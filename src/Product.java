@@ -1,7 +1,17 @@
+import java.util.Scanner;
+
 public class Product
 {
     private String name;
     private double unitPrice;
+
+
+    Scanner in;
+
+    public Product()
+    {
+        in = new Scanner(System.in);
+    }
 
     public Product(String name, double unitPrice) {
         this.name = name;
@@ -28,6 +38,10 @@ public class Product
      * Collect the Product Name and the Unit Price using scanner and return a Product Object
      * @return a instantiated Product Object
      */
-    public Product getProduct()
+    public void getProductData()
+    {
+        setName(SafeInput.getNonZeroLenString(in, "Enter Product Name: "));
+        setUnitPrice(SafeInput.getDouble(in, "Enter the Unit Price: "));
+    }
 
 }

@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Address
 {
     private String title;
@@ -7,7 +9,7 @@ public class Address
     private String zip;
 
 
-
+    Scanner in = new Scanner(System.in);
 
 
 //constructor
@@ -67,8 +69,13 @@ public class Address
      * launch a console dialog using SafeInput to collect the data for the address and return the address
      * @return a instantiated Address Object
      */
-    public Address getAddress()
+    public void getAddress()
     {
+        setTitle(SafeInput.getNonZeroLenString(in,"Enter Address Title:"));
+        setStreet(SafeInput.getNonZeroLenString(in,"Enter Street:"));
+        setCity(SafeInput.getNonZeroLenString(in,"Enter City:"));
+        setState(SafeInput.getNonZeroLenString(in,"Enter State:"));
+        setZip(SafeInput.getRegExString(in,"Enter Zip:","//d{5}"));
 
     }
 }

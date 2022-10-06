@@ -9,6 +9,9 @@ public class Invoice
     public Invoice()
     {
         lineItems = new ArrayList<LineItem>();
+
+        //customerAddress = new Address();
+        customerAddress.getAddress();
     }
 
     /**
@@ -24,8 +27,13 @@ public class Invoice
      */
     public void getInvoiceData()
     {
+        boolean done = false;
         //getline Item data ... do while loop
+        do{
 
+
+
+        }while(!done);
     };
 
     /**
