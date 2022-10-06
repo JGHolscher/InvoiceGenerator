@@ -5,6 +5,12 @@ public class Invoice
     private Address customerAddress;
     private ArrayList<LineItem> lineItems;
 
+
+    public Invoice()
+    {
+        lineItems = new ArrayList<LineItem>();
+    }
+
     /**
      * generates a display to the console of the invoice data
      */
@@ -18,6 +24,7 @@ public class Invoice
      */
     public void getInvoiceData()
     {
+        //getline Item data ... do while loop
 
     };
 
@@ -26,10 +33,12 @@ public class Invoice
      */
     public void getAddressData()
     {
-
+        customerAddress.getAddress();
     };
 
-    private double getTotalAmtDue(){
+    private double getTotalAmtDue()
+    {
+    //go through the line items and sum the line total to ge the total amt due
 
     };
 
