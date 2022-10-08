@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.Scanner;//done
 
 public class Address
 {
@@ -9,11 +9,15 @@ public class Address
     private String zip;
 
 
-    Scanner in = new Scanner(System.in);
+    Scanner in;
 
+    public Address()
+    {
+        in = new Scanner(System.in);
+    }
 
 //constructor
-    public Address(String title, String street, String city, String state, String zip) {
+    public Address(String Title, String street, String city, String state, String zip) {
         this.title = title;
         this.street = street;
         this.city = city;
@@ -22,15 +26,12 @@ public class Address
     }
 
 
+    //getter and setters
 
-//getter and setters
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+    public String getTitle() { return title;}
+
+    public void setTitle(String title) {this.title = title;}
 
     public String getStreet() {
         return street;
@@ -71,11 +72,11 @@ public class Address
      */
     public void getAddress()
     {
-        setTitle(SafeInput.getNonZeroLenString(in,"Enter Address Title:"));
-        setStreet(SafeInput.getNonZeroLenString(in,"Enter Street:"));
-        setCity(SafeInput.getNonZeroLenString(in,"Enter City:"));
-        setState(SafeInput.getNonZeroLenString(in,"Enter State:"));
-        setZip(SafeInput.getRegExString(in,"Enter Zip:","//d{5}"));
+        setTitle(SafeInput.getNonZeroLenString(in,"Enter Title"));
+        setStreet(SafeInput.getNonZeroLenString(in,"Enter Street"));
+        setCity(SafeInput.getNonZeroLenString(in,"Enter City"));
+        setState(SafeInput.getNonZeroLenString(in,"Enter State"));
+        setZip(SafeInput.getRegExString(in,"Enter Zip","\\d{5}"));
 
     }
 }

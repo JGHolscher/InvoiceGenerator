@@ -4,40 +4,38 @@ public class LineItem
 {
     private Product product;
     private int quantity;
+    int lineTotal;
 
     Scanner in;
 
-    public LineItem(){
-        in = new Scanner(System.in);
-        product = new Product();
-        product = getProduct();
-
-        //Get the Product Item name and UnitPrice?
-
-        //Get the quantity for this Line Item?
-
-    }
-
+    public LineItem(){ in = new Scanner(System.in); }
 
 
     public LineItem(Product product, int quantity)
     {
         this.product = product;
         this.quantity = quantity;
+
     }
 
-    public void getlineItemData()
+    public void getLineItemData()
     {
+        product = new Product();
         product.getProductData();
-        quantity.get
+        getQuantityData();
+        getLineTotal();
     }
 
-    public double getLineTotal(Product product, int quantity)
+
+    public double getLineTotal(){return lineTotal;}
+
+    public void setLineTotal(Product product, int quantity)
     {
         this.product = product;
         this.quantity = quantity;
-        //multiply the quantity by the unit price to get the line total
 
+        //multiply the quantity by the unit price to get the line total
+        lineTotal = quantity * (int) product.getUnitPrice();
     };
 
     public Product getProduct() {
@@ -58,6 +56,7 @@ public class LineItem
 
     public void getQuantityData()
     {
-        setQuantity(SafeInput.getInt(in,"Enter Product Quantity: "))
+        setQuantity(SafeInput.getInt(in,"Enter Product Quantity"));
     }
+
 }

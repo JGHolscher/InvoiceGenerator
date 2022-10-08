@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Product
@@ -40,8 +41,8 @@ public class Product
      */
     public void getProductData()
     {
-        setName(SafeInput.getNonZeroLenString(in, "Enter Product Name: "));
-        setUnitPrice(SafeInput.getDouble(in, "Enter the Unit Price: "));
+        setName(SafeInput.getNonZeroLenString(in, "Enter Product Name"));
+        setUnitPrice(SafeInput.getDouble(in, "Enter the Unit Price"));
     }
 
 }

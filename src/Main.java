@@ -4,14 +4,17 @@ public class Main
     {
         Invoice invoice;
 
+
         //get the data for the invoice
         invoice = new Invoice();
-        invoice.getInvoiceData();
 
         //get Address Data
-
+        invoice.getAddressData();
 
         //get Line Item Data
+        invoice.getInvoiceData();
 
+        //display the results
+        invoice.displayInvoice();
     }
 }
