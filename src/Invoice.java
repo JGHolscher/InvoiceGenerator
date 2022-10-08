@@ -16,7 +16,7 @@ public class Invoice
     public Invoice()
     {
         lineItemArrayList = new ArrayList<LineItem>();
-        lineItems = new LineItem();
+        lineItems = new LineItem(lineItems);
         customerAddress = new Address();
     }
 
@@ -32,8 +32,15 @@ public class Invoice
             Scanner in = new Scanner(System.in);
 
             //product & quantity
-                lineItems.getLineItemData();
-                lineItemArrayList.add(lineItems);
+            lineItems.getLineItemData();
+
+            LineItem lI = new LineItem(...);
+
+            lineItemArrayList.add(lI);
+            System.out.println(lineItemArrayList);
+
+
+
 
             done = SafeInput.getYNConfirm(in, "Would you like to enter more data?");
 

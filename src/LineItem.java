@@ -18,6 +18,7 @@ public class LineItem
 
     }
 
+
     public void getLineItemData()
     {
         product = new Product();
