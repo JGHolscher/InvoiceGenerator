@@ -11,13 +11,13 @@ public class LineItem
     public LineItem(){ in = new Scanner(System.in); }
 
 
-    public LineItem(Product product, int quantity)
+    public LineItem(Product product, int quantity, int lineTotal)
     {
         this.product = product;
         this.quantity = quantity;
+        this.lineTotal = lineTotal;
 
     }
-
 
     public void getLineItemData()
     {
@@ -26,6 +26,9 @@ public class LineItem
         getQuantityData();
         getLineTotal();
     }
+
+
+
 
 
     public double getLineTotal(){return lineTotal;}

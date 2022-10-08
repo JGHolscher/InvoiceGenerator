@@ -7,7 +7,7 @@ public class Invoice
 
     private LineItem lineItems;
 
-    private ArrayList<LineItem> lineItemArrayList;
+    private ArrayList<String> lineItemArrayList;
    // ArrayList<LineItem> lineItemArrayList = new ArrayList<LineItem>();
 
     int amtDue;
@@ -15,8 +15,8 @@ public class Invoice
 
     public Invoice()
     {
-        lineItemArrayList = new ArrayList<LineItem>();
-        lineItems = new LineItem(lineItems);
+        lineItemArrayList = new ArrayList<String>();
+        lineItems = new LineItem();
         customerAddress = new Address();
     }
 
@@ -33,12 +33,14 @@ public class Invoice
 
             //product & quantity
             lineItems.getLineItemData();
+            String data ="";
+            data += lineItems.getProduct().getName();
+            data += lineItems.getProduct().getUnitPrice();
+            data += lineItems.getQuantity();
+            data += lineItems.getLineTotal();
+            lineItemArrayList.add(data);
 
-            LineItem lI = new LineItem(...);
-
-            lineItemArrayList.add(lI);
-            System.out.println(lineItemArrayList);
-
+            //System.out.printf("%-30s %-30s %-30s %-30s",lineItemArrayList);
 
 
 
@@ -57,11 +59,11 @@ public class Invoice
 
 
 
-    private double getTotalAmtDue()
-    {
-        amtDue += lineItems.getLineTotal();
-        return amtDue;
-    };
+    //private double getTotalAmtDue()
+    //{
+        //amtDue += lineItems.getLineTotal();
+        //return amtDue;
+   // };
 
     /**
      * generates a display to the console of the invoice data
@@ -74,26 +76,24 @@ public class Invoice
         System.out.println(customerAddress.getCity() + ", " + customerAddress.getState() + " " + customerAddress.getZip());
 
         System.out.println("=====================================================");//^done
-        System.out.printf("%-30s %-30s %-30s %-30s", "Item", "Qty", "Price", "Total\n");
+        System.out.printf("%-30s %-30s %-30s %-30s", "Item", "Qty", "Price", "Total");
 
 
 
+        //System.out.print(lineItemArrayList);
 
 
+       // System.out.print( lineItemArrayList + "\n");
+        for (String list : lineItemArrayList) {
+            System.out.println("\n");
+            System.out.printf(list);
 
-        for (LineItem list : lineItemArrayList) {
-        System.out.print(list + "\n");
         }
 
 
+        System.out.println("\n=====================================================");
 
-
-
-
-
-        System.out.println("=====================================================");
-
-        System.out.println(amtDue);
+        //System.out.println(amtDue);
 
 
     };

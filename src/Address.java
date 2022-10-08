@@ -17,7 +17,7 @@ public class Address
     }
 
 //constructor
-    public Address(String Title, String street, String city, String state, String zip) {
+    public Address(String title, String street, String city, String state, String zip) {
         this.title = title;
         this.street = street;
         this.city = city;
@@ -78,5 +78,17 @@ public class Address
         setState(SafeInput.getNonZeroLenString(in,"Enter State"));
         setZip(SafeInput.getRegExString(in,"Enter Zip","\\d{5}"));
 
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "title='" + title + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zip='" + zip + '\'' +
+                ", in=" + in +
+                '}';
     }
 }
