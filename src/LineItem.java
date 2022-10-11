@@ -21,10 +21,14 @@ public class LineItem
 
     public void getLineItemData()
     {
+        LineItem li = new LineItem();
+
         product = new Product();
         product.getProductData();
-        getQuantityData();
-        getLineTotal();
+        li.getQuantityData();
+        li.setLineTotal(product, this.quantity);
+
+
     }
 
     public double getLineTotal(){return lineTotal;}
@@ -35,7 +39,7 @@ public class LineItem
         this.quantity = quantity;
 
         //multiply the quantity by the unit price to get the line total
-        lineTotal = product.getUnitPrice() * (double) getQuantity();
+        this.lineTotal = product.getUnitPrice() * quantity;
     };
 
     public Product getProduct() {

@@ -5,18 +5,20 @@ public class Invoice
 {
     private Address customerAddress;
 
-    private LineItem lineItems;
+    private LineItem lineItem;
 
-    private ArrayList<String> lineItemArrayList;
+    private ArrayList<LineItem> lineItemArrayList;
    // ArrayList<LineItem> lineItemArrayList = new ArrayList<LineItem>();
 
-    int amtDue;
+    private int amtDue;
+
+    Scanner in = new Scanner(System.in);
 
 
     public Invoice()
     {
-        lineItemArrayList = new ArrayList<String>();
-        lineItems = new LineItem();
+        lineItemArrayList = new ArrayList<LineItem>();
+        lineItem = new LineItem();
         customerAddress = new Address();
     }
 
@@ -25,28 +27,24 @@ public class Invoice
      */
     public void getInvoiceData()
     {
-
-        boolean done = true;
+        boolean done = false;
         //get line Item data
         do{
-            Scanner in = new Scanner(System.in);
-
+            LineItem li = new LineItem();
             //product & quantity
-            lineItems.getLineItemData();
-            String data ="";
-            data += lineItems.getProduct().getName();
-            data += lineItems.getProduct().getUnitPrice();
-            data += lineItems.getQuantity();
-            data += lineItems.getLineTotal();
-            lineItemArrayList.add(data);
-
-            //System.out.printf("%-30s %-30s %-30s %-30s",lineItemArrayList);
-
+            li.getLineItemData();
+            /*String data ="";
+            data += lineItem.getProduct().getName();
+            data += lineItem.getProduct().getUnitPrice();
+            data += lineItem.getQuantity();
+            data += lineItem.getLineTotal();
+             */
+            lineItemArrayList.add(lineItem);
 
 
-            done = SafeInput.getYNConfirm(in, "Would you like to enter more data?");
+            done = SafeInput.getYNConfirm(in, "Are you done?");
 
-        }while(done);
+        }while(!done);
     };
 
     /**
@@ -75,8 +73,8 @@ public class Invoice
         System.out.println(customerAddress.getStreet());
         System.out.println(customerAddress.getCity() + ", " + customerAddress.getState() + " " + customerAddress.getZip());
 
-        System.out.println("=====================================================");//^done
-        System.out.printf("%-30s %-30s %-30s %-30s", "Item", "Qty", "Price", "Total");
+        System.out.println("==========================================================================================================");//^done
+        System.out.printf("%-30s %-30s %-30s %-30s", "Item", "Price", "Qty", "Total");
 
 
 
@@ -84,16 +82,16 @@ public class Invoice
 
 
        // System.out.print( lineItemArrayList + "\n");
-        for (String list : lineItemArrayList) {
+        for (LineItem list : lineItemArrayList) {
             System.out.println("\n");
-            System.out.printf(list);
+            System.out.printf("%-30s %-30s %-30s %-30s", list.getProduct().getName(), list.getProduct().getUnitPrice(), list.getQuantity(), list.getLineTotal());
 
         }
 
 
-        System.out.println("\n=====================================================");
+        System.out.println("\n==========================================================================================================");
 
-        //System.out.println(amtDue);
+        System.out.println(amtDue);
 
 
     };
