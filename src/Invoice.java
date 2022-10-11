@@ -4,15 +4,11 @@ import java.util.Scanner;
 public class Invoice
 {
     private Address customerAddress;
-
     private LineItem lineItem;
-
     private ArrayList<LineItem> lineItemArrayList;
-
-    private int amtDue;
+    private double amtDue = 0;
 
     Scanner in = new Scanner(System.in);
-
 
     public Invoice()
     {
@@ -48,13 +44,15 @@ public class Invoice
         customerAddress.getAddress();
     };
 
+    private double getTotalAmtDue()
+    {
+        //get the total amount due -- add all line Totals
+        for (LineItem list : lineItemArrayList) {
+           this.amtDue += list.getLineTotal();
+        }
+        return amtDue;
+    };
 
-
-    //private double getTotalAmtDue()
-    //{
-        //amtDue += lineItems.getLineTotal();
-        //return amtDue;
-   // };
 
     /**
      * generates a display to the console of the invoice data
@@ -69,22 +67,14 @@ public class Invoice
         System.out.println("==========================================================================================================");//^done
         System.out.printf("%-30s %-30s %-30s %-30s", "Item", "Price", "Qty", "Total");
 
-
-
-        //System.out.print(lineItemArrayList);
-
-
-       // System.out.print( lineItemArrayList + "\n");
         for (LineItem list : lineItemArrayList) {
             System.out.println("\n");
-            System.out.printf("%-30s %-30s %-30s %-30s", list.getProduct().getName(), list.getProduct().getUnitPrice(), list.getQuantity(), list.getLineTotal());
-
+            System.out.printf("%-30s %-30.2f %-30s %-30.2f", list.getProduct().getName(), list.getProduct().getUnitPrice(), list.getQuantity(), list.getLineTotal());
         }
-
 
         System.out.println("\n==========================================================================================================");
 
-        System.out.println(amtDue);
+        System.out.printf("%-30s %-30.2f", "Amount Due:", getTotalAmtDue());
 
 
     };

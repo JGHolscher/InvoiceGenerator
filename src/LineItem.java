@@ -21,14 +21,10 @@ public class LineItem
 
     public void getLineItemData()
     {
-        //LineItem li = new LineItem();
-
         product = new Product();
         product.getProductData();
         getQuantityData();
         setLineTotal(product, this.quantity);
-
-
     }
 
     public double getLineTotal(){return lineTotal;}
