@@ -8,7 +8,6 @@ public class Invoice
     private LineItem lineItem;
 
     private ArrayList<LineItem> lineItemArrayList;
-   // ArrayList<LineItem> lineItemArrayList = new ArrayList<LineItem>();
 
     private int amtDue;
 
@@ -27,24 +26,18 @@ public class Invoice
      */
     public void getInvoiceData()
     {
-        boolean done = false;
+        boolean cont = true;
         //get line Item data
         do{
             LineItem li = new LineItem();
+
             //product & quantity
             li.getLineItemData();
-            /*String data ="";
-            data += lineItem.getProduct().getName();
-            data += lineItem.getProduct().getUnitPrice();
-            data += lineItem.getQuantity();
-            data += lineItem.getLineTotal();
-             */
-            lineItemArrayList.add(lineItem);
+            lineItemArrayList.add(li);
 
+            cont = SafeInput.getYNConfirm(in, "Would you like to add another Product?");
 
-            done = SafeInput.getYNConfirm(in, "Are you done?");
-
-        }while(!done);
+        }while(cont);
     };
 
     /**
